@@ -9,6 +9,6 @@ layout: post
 <li>kapāta gaļa,</li>
 <li>sīpoli,</li>
 <li>kaperi,</li>
-<li>garšvielas(pipari, vorčesteršīras mērcr)</li>
+<li>garšvielas(pipari, vorčesteršīras mērce)</li>
 </ul>
 </p>
