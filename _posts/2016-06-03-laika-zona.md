@@ -1,6 +1,6 @@
 ---
 layout: post
-title: android
-date: 2016-06-03 11:35
+title: @laika zonas tests
+date: 2016-06-03 20:36
 ---
-laika zonas tests, parādīsies 11:20 am
+laika zonas tests, parādīsies 20:36
