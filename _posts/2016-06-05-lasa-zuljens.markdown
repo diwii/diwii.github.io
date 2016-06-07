@@ -6,8 +6,8 @@ Laša žuljēns ar grauzdētu, siltu maizīti.
 
 +  kāda maizīte?
 
-  +  kā pagatavota?
+    +  kā pagatavota?
 
-  +  ola sastāvā ir?
+    +  ola sastāvā ir?
 
 +  sīkāk par žuljēna sastāvu?
