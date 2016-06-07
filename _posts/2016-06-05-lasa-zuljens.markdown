@@ -2,13 +2,12 @@
 layout: post
 title: Laša žuljēns ar grauzdētu, siltu maizīti.
 ---
-{{ page.title }}
-====================
 Laša žuljēns ar grauzdētu, siltu maizīti.
+
 +  kāda maizīte?
 
-+               kā pagatavota?
+  +  kā pagatavota?
 
-+        ola sastāvā ir?
+  +  ola sastāvā ir?
 
-+      sīkāk par žuljēna sastāvu?
++  sīkāk par žuljēna sastāvu?
