@@ -1,0 +1,26 @@
+{
+  "name": "diwii.github.io",
+  "description": "It's all about current moment.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "dance",
+    "build": "node_modules/.bin/browserify src/index/learn-anime.js -o script/index.js",
+    "watch": "node_modules/.bin/watchify src/index/learn-anime.js -o script/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diwii/diwii.github.io.git"
+  },
+  "author": "Valdis Locs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diwii/diwii.github.io/issues"
+  },
+  "homepage": "https://github.com/diwii/diwii.github.io#readme",
+  "dependencies": {
+    "animejs": "^3.2.1",
+    "browserify": "^17.0.0",
+    "watchify": "^4.0.0"
+  }
+}
