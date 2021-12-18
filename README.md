@@ -11,3 +11,12 @@
 - Re-engageable, so it's able to send notifications whenever there's new content available.
 - Responsively designed, so it's usable on any device with a screen and a browser—mobile phones, tablets, laptops, TVs, - refrigerators, etc.
 - Secure, so the connections between the user, the app, and your server are secured against any third parties trying to get access to sensitive data.
+
+# Tools
+- [Web Push: Data Encryption Test Page](https://jrconlin.github.io/WebPushDataTestPage/)
+
+# Additional Read
+- [Service Worker Cookbook](https://github.com/mozilla/serviceworker-cookbook)
+- [Storage for the Web](https://web.dev/storage-for-the-web/)
+- [File System Access](https://web.dev/file-system-access/)
+- 

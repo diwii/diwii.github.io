@@ -40,6 +40,7 @@ self.addEventListener('install', (e) => {
 });
 
 // Fetching content using Service Worker
+// https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Offline_Service_workers
 self.addEventListener('fetch', (e) => {
     e.respondWith((async () => {
         const r = await caches.match(e.request);
