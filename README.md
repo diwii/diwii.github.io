@@ -1,7 +1,7 @@
 # I learn PWA
-[web.dev](https://web.dev/)
-[MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
-[Markdown cheat sheet](https://www.markdownguide.org/cheat-sheet/)
+- [web.dev](https://web.dev/)
+- [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
+- [Markdown cheat sheet](https://www.markdownguide.org/cheat-sheet/)
 
 - Discoverable, so the contents can be found through search engines.
 - Installable, so it can be available on the device's home screen or app launcher.
