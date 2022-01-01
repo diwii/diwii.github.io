@@ -19,4 +19,5 @@
 - [Service Worker Cookbook](https://github.com/mozilla/serviceworker-cookbook)
 - [Storage for the Web](https://web.dev/storage-for-the-web/)
 - [File System Access](https://web.dev/file-system-access/)
-- 
+- [Fast Playback with preload](https://web.dev/fast-playback-with-preload/)
+- [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API)
