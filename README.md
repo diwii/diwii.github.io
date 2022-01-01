@@ -1,3 +1,6 @@
+# Voice recognition?
+# Todo list?
+
 # I learn PWA
 - [web.dev](https://web.dev/)
 - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps)
