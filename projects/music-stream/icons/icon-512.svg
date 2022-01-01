@@ -1,0 +1,9 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="512" height="512" fill="#67B99B"/>
+<circle cx="261.307" cy="219.96" r="83.6507" fill="white"/>
+<path d="M224.426 460.589L333.636 335.842L124.719 328.124L224.426 460.589Z" fill="white"/>
+<rect x="28" y="211.631" width="92.4171" height="92.4171" transform="rotate(-37.5861 28 211.631)" fill="white"/>
+<rect x="128.052" y="126.529" width="44.0397" height="44.0397" transform="rotate(-26.3756 128.052 126.529)" fill="white"/>
+<rect x="209.573" y="83.0168" width="32.231" height="32.231" transform="rotate(-5.37069 209.573 83.0168)" fill="white"/>
+<path d="M340.52 106.247C362.689 106.247 492 202.127 492 224.387C492 246.648 395.13 303.611 372.96 303.611C350.791 303.611 411.717 246.648 411.717 224.387C411.717 202.127 318.35 106.247 340.52 106.247Z" fill="white"/>
+</svg>

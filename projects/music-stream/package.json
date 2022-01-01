@@ -1,0 +1,13 @@
+{
+  "name": "diwii-audio-player",
+  "version": "1.0.0",
+  "description": "Audio Player for Cloud",
+  "main": "index.html",
+  "scripts": {
+    "test": "null"
+  },
+  "author": "Valdis Locs",
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
+}
