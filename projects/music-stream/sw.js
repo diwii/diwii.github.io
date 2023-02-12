@@ -1,5 +1,5 @@
 // self.importScripts(''); // Import additional scripts if required
-const cacheName = 'dAPC-v1';
+const CACHE_NAME = 'dAPC-v1';
 
 // Installing Service Worker
 self.addEventListener('install', (e) => {
@@ -13,119 +13,77 @@ self.addEventListener('install', (e) => {
 });
 
 // Fetching content using Service Worker
-self.addEventListener('fetch', (event) => {
-    console.log('[Service Worker] Fetching', event.request);
+// self.addEventListener('fetch', (event) => {
+//     console.log('Handling fetch event for', event.request.url);
 
-    event.respondWith((async () => {
-        // If request is cached
-        const r = await caches.match(event.request);
-        console.log(`[Service Worker] Fetching resource: ${event.request.url}`);
-        if (r) return r;
+//     if (event.request.headers.get('range')) {
+//         let pos = Number(/^bytes\=(\d+)\-$/g.exec(event.request.headers.get('range'))[1]);
+//         console.log('Range request for', event.request.url,
+//           ', starting position:', pos);
+//     }
+// });
 
-        // Else fetch request from source
-        const response = await fetch(event.request);
-        const cache = await caches.open(cacheName);
-        // 206 partial content
-        if (response.status === 206) {
-            console.log('do the readable stream??');
-            const reader = response.body.getReader();
-            return self.readStream(response, reader, event.request);
-        } else {
-            console.log(`[Service Worker] Caching new resource: ${event.request.url}`);
-            cache.put(event.request, response.clone());
+self.addEventListener('fetch', function(event) {
+    console.log('Handling fetch event for', event.request.url);
+  
+    if (event.request.headers.get('range')) {
+      var pos =
+      Number(/^bytes\=(\d+)\-$/g.exec(event.request.headers.get('range'))[1]);
+
+      console.log('Range request for', event.request.url,', starting position:', pos);
+      event.respondWith(
+        caches.open(CACHE_NAME)
+        .then(function(cache) {
+          return cache.match(event.request.url);
+        }).then(function(res) {
+          if (!res) {
+            return fetch(event.request)
+            .then(res => {
+              return res.arrayBuffer();
+            });
+          }
+          return res.arrayBuffer();
+        }).then(function(ab) {
+            console.log(
+                `slice`, (ab.byteLength - 1), '/', ab.byteLength
+            )
+          return new Response(
+            ab.slice(pos),
+            {
+              status: 206,
+              statusText: 'Partial Content',
+              headers: [
+                // ['Content-Type', 'video/webm'],
+                ['Content-Range', 'bytes ' + pos + '-' +
+                  (ab.byteLength - 1) + '/' + ab.byteLength]]
+            });
+        }));
+    } else {
+      console.log('Non-range request for', event.request.url);
+      event.respondWith(
+      // caches.match() will look for a cache entry in all of the caches available to the service worker.
+      // It's an alternative to first opening a specific named cache and then matching on that.
+      caches.match(event.request).then(function(response) {
+        if (response) {
+          console.log('Found response in cache:', response);
+          return response;
         }
-        console.log(cache);
-        return response;
-    })());
-
-    // (async () => {
-    //     const response = await fetch(event.request);
-    //     console.log(response);
-    // })();
-
-    // fetch(event.request).then(response => console.log(response));
-
-    // event.respondWith((async () => {
-    //     console.log('respondWith');
-
-    //     const cachedResponse = await caches.match(event.request);
-    //     // Return cached response
-    //     console.log(cachedResponse);
-    //     if (cachedResponse) return cachedResponse;
-
-    //     // Otherwise fetch from source
-    //     const response = await fetch(event.request);
-    //     // Create data reader
-    //     const reader = response.body.getReader();
-
-        // const stream = new ReadableStream({
-        //     start(controller) {
-        //         return pump();
-        //         function pump() {
-        //             return reader.read().then(({ done, value }) => {
-        //                 console.log(value);
-        //                 // When no more data needs to be consumed, close the stream
-        //                 if (done) {
-        //                     console.log('stream done')
-        //                     // saveToCache();
-        //                     console.log(response);
-        //                     console.log(stream);
-        //                     // console.log(new Response());
-        //                     controller.close();
-        //                     return;
-        //                 }
-        //                 // Enqueue the next data chunk into our target stream
-        //                 controller.enqueue(value);
-        //                 return pump();
-        //             });
-        //         }
-        //     }
-        // });
-
-    //     const newResponse = new Response(stream);
-
-    //     function saveToCache() {
-    //         const cache = caches.open(cacheName);
-    //         cache.put(event.request, newResponse);
-    //     }
-
-    //     return newResponse;
-    //     return new Response(stream);
-    // })());
+        console.log('No response found in cache. About to fetch from network...');
+        // event.request will always have the proper mode set ('cors, 'no-cors', etc.) so we don't
+        // have to hardcode 'no-cors' like we do when fetch()ing in the install handler.
+        return fetch(event.request).then(function(response) {
+          console.log('Response from network is:', response);
+  
+          return response;
+        }).catch(function(error) {
+          // This catch() will handle exceptions thrown from the fetch() operation.
+          // Note that a HTTP error response (e.g. 404) will NOT trigger an exception.
+          // It will return a normal response object that has the appropriate error code set.
+          console.error('Fetching failed:', error);
+  
+          throw error;
+        });
+      })
+      );
+    }
 });
-
-function readStream(response, reader, request) {
-    const stream = new ReadableStream({
-        start(controller) {
-            return pump();
-            function pump() {
-                return reader.read().then(({ done, value }) => {
-                    console.log(value);
-                    // When no more data needs to be consumed, close the stream
-                    if (done) {
-                        console.log('stream done')
-                        console.log('save to cache');
-                        // console.log(response);
-                        // console.log(stream);
-                        // console.log(new Response());
-                        controller.close();
-                        self.pleaseCache(request, stream);
-                        return;
-                    }
-                    // Enqueue the next data chunk into our target stream
-                    controller.enqueue(value);
-                    return pump();
-                });
-            }
-        }
-    });
-
-    return new Response(stream);
-}
-
-function pleaseCache(request, stream) {
-    console.log('SAVING TO CACHE');
-    const cache = caches.open(cacheName);
-    const response = new Response(stream);
-    cache.put(request, response);
-}

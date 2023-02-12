@@ -30,17 +30,17 @@ function playBasicAudio() {
     const audio = new Audio('audio/eric-skiff-underclocked.mp3');
     audio.addEventListener('canplay', (e) => {
         console.log('Audio can start, but not sure it will play through.');
-        console.log(audio.audioTracks);
-        console.log(audio.autoplay);
-        console.log(audio.buffered);
-        console.log(audio.controller);
-        console.log(audio.controlsList);
-        console.log(audio.currentSrc);
-        console.log(audio.currentTime);
-        console.log(audio.defaultMuted);
-        console.log(audio.defaultPlaybackRate);
-        console.log(audio.duration);
-        console.log(audio.networkState);
+        // console.log(audio.audioTracks);
+        // console.log(audio.autoplay);
+        // console.log(audio.buffered);
+        // console.log(audio.controller);
+        // console.log(audio.controlsList);
+        // console.log(audio.currentSrc);
+        // console.log(audio.currentTime);
+        // console.log(audio.defaultMuted);
+        // console.log(audio.defaultPlaybackRate);
+        // console.log(audio.duration);
+        // console.log(audio.networkState);
         audio.play();
     });
 
